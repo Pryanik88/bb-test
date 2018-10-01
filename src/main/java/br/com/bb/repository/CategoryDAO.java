@@ -1,7 +1,16 @@
 package br.com.bb.repository;
 
-import org.springframework.stereotype.Repository;
+import br.com.bb.model.Category;
+import org.springframework.data.repository.Repository;
 
-@Repository
-public class CategoryDAO {
+import java.util.List;
+
+
+public interface CategoryDAO extends Repository<Category, Long> {
+
+
+    List<Category> findAll();
+
+    Category findOne(Long id);
+
 }
