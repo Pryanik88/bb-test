@@ -2,12 +2,14 @@ package br.com.bb.controller;
 
 import br.com.bb.model.Category;
 import br.com.bb.service.CategoryService;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -28,7 +30,7 @@ public class CategoryController {
     }
 
     @GetMapping("/getByLetter/{letter}")
-    public Category getByLetter(@PathVariable String letter){
+    public Category getByLetter(@PathVariable @NotNull @NotEmpty String letter){
         return categoryService.getByLetter(letter);
     }
 }
